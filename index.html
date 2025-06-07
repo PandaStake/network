@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Network Stats</title>
+  <link rel="stylesheet" href="styles/style.css"/>
+</head>
+<body>
+  <div class="stat-card loading" id="network-stats-card">
+    <h2>Network Stats</h2>
+    <div class="stat-item">
+      <span>Total Staked ETH:</span>
+      <span id="eth-count"></span>
+    </div>
+    <div class="stat-item">
+      <span>Active Users:</span>
+      <span id="user-count"></span>
+    </div>
+    <p class="stats-note">
+      Note: Data may be delayed; statistics might not reflect the very latest changes
+    </p>
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

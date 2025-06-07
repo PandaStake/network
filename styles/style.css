@@ -1,0 +1,43 @@
+/* Podstawowy wygląd karty */
+.stat-card {
+  background: #1e1e1e;
+  color: #e0e0e0;
+  padding: 50px 40px 8px 40px;
+  width: 500px;
+  margin: 2rem auto;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  font-family: Arial, sans-serif;
+}
+.stat-card h2 {
+  font-size: 28px;
+  color: #2ecc71;
+  margin-bottom: 1rem;
+}
+.stat-card .stat-item {
+  display: inline-flex;
+  align-items: center;
+  font-size: 22px;
+  margin-bottom: 0.75rem;
+}
+.stat-card .stat-item span + span {
+  margin-left: 0.7rem;
+}
+.stats-note {
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.6);
+  margin-top: 1.5rem;
+  text-align: center;
+}
+
+/* Loading placeholder */
+#network-stats-card.loading .stat-item > span:nth-child(2) {
+  display: none;
+}
+#network-stats-card.loading .stat-item::after {
+  content: 'Loading…';
+  display: inline-block;
+  margin-left: 0.25rem;
+  white-space: nowrap;
+  color: rgba(255,255,255,0.6);
+  font-style: italic;
+}
