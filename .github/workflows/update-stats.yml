@@ -15,8 +15,14 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
-        with:
+        with:  
+          token: ${{ secrets.GITHUB_TOKEN }}
           persist-credentials: true
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
 
       - name: Run stats updater
         run: node update-stats.js
