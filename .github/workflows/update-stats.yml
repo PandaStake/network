@@ -1,11 +1,12 @@
-# .github/workflows/update-stats.yml
 name: Update Network Stats
 
+# Grant write permission to repo contents so GITHUB_TOKEN może pushować
+permissions:
+  contents: write
+
 on:
-  # uruchamiaj co 15 minut
   schedule:
     - cron: '*/15 * * * *'
-  # pozwala też na ręczne uruchomienie w UI
   workflow_dispatch:
 
 jobs:
@@ -15,9 +16,8 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
-        with:  
-          token: ${{ secrets.GITHUB_TOKEN }}
-          persist-credentials: true
+        with:
+          persist-credentials: true  # zachowaj poświadczenia do push
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -34,4 +34,3 @@ jobs:
           git add stats.json
           git commit -m "Automated stats update" || echo "No changes to commit"
           git push
-
