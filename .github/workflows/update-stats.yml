@@ -1,0 +1,31 @@
+# .github/workflows/update-stats.yml
+name: Update Network Stats
+
+on:
+  # uruchamiaj co 15 minut
+  schedule:
+    - cron: '*/15 * * * *'
+  # pozwala też na ręczne uruchomienie w UI
+  workflow_dispatch:
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+
+      - name: Run stats updater
+        run: node update-stats.js
+
+      - name: Commit & push changes
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add stats.json
+          git commit -m "Automated stats update" || echo "No changes to commit"
+          git push
+
